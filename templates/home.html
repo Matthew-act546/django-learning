@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3> Home Page </h3>
+<p> This is a paragraph</p>
+
+{{ my_html|safe }}
+
+<p>
+    {{ my_text|upper }}, {{ my_number }}
+</p>
+
+{{ my_title|title }}
+
+<ul>
+{% for my_lists in my_list %}
+    {% if my_lists == 4321 %}
+        <li>{{ forloop.counter }} - {{ my_lists|add:9 }} </li>
+    {% elif my_lists == "string!" %}
+        <li>{{ forloop.counter }} - {{my_lists}} - This is a string data type!</li>
+    {% else %}
+        <li>{{ forloop.counter }} - {{ my_lists }} </li>
+    {% endif %}
+{% empty %}
+    <p>You do not have any list</p>
+{% endfor %}
+</ul>
+
+{% endblock content %}
